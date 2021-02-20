@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import praw #reddit python api
 import boto3 #aws python api
 import requests
@@ -78,8 +78,10 @@ for comment in subreddit.stream.comments(): #listens to all comments
 		try:
 			if comment.is_root == True:
 				if comment.submission.selftext:
-					speechtext = comment.submission.selftext
+					selfsub = comment.submission
+					speechtext = selfsub.selftext
 					enseTitle = "This is a selftext post on reddit by u/" + comment.submission.author.name + " on  r/" + comment.submission.subreddit.display_name
+					ense()
 				else:
 					print('not a self post')
 					continue
